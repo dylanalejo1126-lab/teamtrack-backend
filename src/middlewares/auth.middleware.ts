@@ -11,8 +11,10 @@ export const verificarToken = (req: Request, res: Response, next: NextFunction) 
   const token = authHeader.split(" ")[1];
 
   try {
-    const decoded = jwt.verify(token, "secreto");
-    (req as any).user = decoded;
+    const decoded: any = jwt.verify(token, "secreto");
+
+
+    (req as any).usuario = decoded;
 
     next();
   } catch (error) {
